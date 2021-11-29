@@ -1,20 +1,57 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Currency Rate
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" offset="4">
+        <ion-img src="../../assets/logo.png"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              Edit Currencies
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Currency 1</ion-label>
+              <ion-select disabled value="USD">
+                <ion-select-option value="USD">USD</ion-select-option>
+              </ion-select>
+            </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+            <ion-item>
+              <ion-label position="floating">Currency 2</ion-label>
+              <ion-select #cr2 value="TND"> // Template Reference
+                <ion-select-option value="EUR">Euro</ion-select-option>
+                <ion-select-option value="GBP">Livre sterling</ion-select-option>
+                <ion-select-option value="JPY">Yen Japonais</ion-select-option>
+                <ion-select-option value="CNY">Yuan chinois</ion-select-option>
+                <ion-select-option value="TND">Dinar tunisien</ion-select-option>
+                <ion-select-option value="EGP">Livre égyptien</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-button (click)="convert(cr2)" class="ion-margin-vertical" color="success" expand="block">Convert
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="show" class="ion-margin">
+    <strong>Today, 1 USD worth {{ taux }} {{ cr2.value }}
+    </strong>
   </div>
+
 </ion-content>
